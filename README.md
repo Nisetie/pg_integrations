@@ -20,7 +20,7 @@ sudo make install
 create extension pg_integrations;
 ```
 ### Вариант 2.
-Вручную скопировать все файлы, кроме Makefile в каталог **SHAREDIR**/extension/. SHAREDIR уточнять через утилиту pg_config.
+Вручную скопировать все файлы, кроме Makefile, в каталог **SHAREDIR**/extension/. SHAREDIR уточнять через утилиту pg_config.
 
 Затем в СУБД:
 ```
