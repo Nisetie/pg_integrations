@@ -255,12 +255,12 @@ RETURNING ''UPDATE'',' || _dstReturningFields || '
 )';
 	_sql = _sql || '
 ,notmatchedByTargetResult as (
-insert into ' || _dstDOName || '(' || _dstFields || ') 
+insert into ' || _dstDOName || ' as target(' || _dstFields || ') 
 select ' || _srcInsertingFields || '
 from source 
 left join (select * from ' || _dstDOName || ' as target where ' || _targetFieldsTimestampFilter || ') as target on ' || _mergeOn || '
 where  ' || case when _mergeInsert = true then 'target is null' else 'false' end || '
-RETURNING ''INSERT'',' || _dstFields || '
+RETURNING ''INSERT'',' || _dstReturningFields || '
 )';
 	_sql = _sql || '
 ,notmatchedBySourceResult as (
